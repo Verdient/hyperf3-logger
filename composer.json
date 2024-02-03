@@ -1,0 +1,15 @@
+{
+    "name": "verdient/hyperf3-logger",
+    "type": "library",
+    "require": {
+        "hyperf/config": "^3.1",
+        "hyperf/logger": "^3.1",
+        "hyperf/exception-handler": "^3.1",
+        "verdient/cli": "^0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Verdient\\Hyperf3\\Logger\\": "src"
+        }
+    }
+}
