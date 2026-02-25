@@ -2,78 +2,36 @@
 
 namespace Verdient\Hyperf3\Logger;
 
-use Hyperf\Context\ApplicationContext;
-use Hyperf\Logger\LoggerFactory;
 use Psr\Log\LoggerInterface;
-use function Hyperf\Config\config;
+use Verdient\Logger\HasLogger as LoggerHasLogger;
 
 /**
  * 包含记录器
+ *
  * @author Verdient。
  */
 trait HasLogger
 {
-    /**
-     * 记录器
-     * @author Verdient。
-     */
-    protected ?LoggerInterface $logger = null;
+    use LoggerHasLogger;
 
     /**
-     * 获取记录器名称
-     * @return string
+     * 创建默认的记录器
+     *
      * @author Verdient。
      */
-    protected function getLoggerName()
+    protected function createDefaultLogger(): LoggerInterface
     {
-        return static::class;
+        return Utils::createLogger($this->groupsForCreateDefaultLogger());
     }
 
     /**
-     * 获取记录器分组
-     * @return string
+     * 创建默认的记录器的组名集合
+     *
+     * @return array<int|string,string>
      * @author Verdient。
      */
-    protected function getLoggerGroup()
+    protected function groupsForCreateDefaultLogger(): array
     {
-        $loggerConfig = config('logger');
-        if (isset($loggerConfig[static::class])) {
-            return static::class;
-        }
-        return 'default';
-    }
-
-    /**
-     * 获取日志组件
-     * @return LoggerInterface
-     * @author Verdient。
-     */
-    public function logger(): LoggerInterface
-    {
-        if (!$this->logger) {
-            if (ApplicationContext::hasContainer()) {
-                /** @var LoggerFactory|null */
-                $loggerFactory = ApplicationContext::getContainer()->get(LoggerFactory::class);
-                if ($loggerFactory) {
-                    $this->logger = $loggerFactory->get($this->getLoggerName(), $this->getLoggerGroup());
-                }
-            }
-            if (!$this->logger) {
-                $this->logger = new Logger(new StdoutLogger);
-            }
-        }
-        return $this->logger;
-    }
-
-    /**
-     * 设置记录器
-     * @param LoggerInterface 记录器
-     * @return static
-     * @author Verdient。
-     */
-    public function setLogger(LoggerInterface $logger): static
-    {
-        $this->logger = $logger;
-        return $this;
+        return [];
     }
 }
