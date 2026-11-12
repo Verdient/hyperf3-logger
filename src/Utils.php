@@ -33,7 +33,7 @@ class Utils
             return new StdoutLogger();
         }
 
-        if (!$loggerConfig = $config->get('logger')) {
+        if (!$loggerConfig = $config->get('logger.channels', $config->get('logger'))) {
             return new StdoutLogger();
         }
 
