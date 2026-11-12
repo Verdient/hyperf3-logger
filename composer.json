@@ -2,14 +2,14 @@
     "name": "verdient/hyperf3-logger",
     "type": "library",
     "require": {
-        "hyperf/config": "^3.1",
-        "hyperf/contract": "^3.1",
-        "hyperf/logger": "^3.1",
-        "hyperf/exception-handler": "^3.1",
+        "hyperf/config": "^3.2",
+        "hyperf/contract": "^3.2",
+        "hyperf/logger": "^3.2",
+        "hyperf/exception-handler": "^3.2",
         "psr/log": "^3.0",
         "verdient/cli": "^1.0",
         "verdient/logger": "^0.0",
-        "verdient/hyperf3-di": "^2.0"
+        "verdient/hyperf3-di": "^2.1"
     },
     "autoload": {
         "psr-4": {
