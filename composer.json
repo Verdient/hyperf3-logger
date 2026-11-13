@@ -9,7 +9,7 @@
         "psr/log": "^3.0",
         "verdient/cli": "^1.0",
         "verdient/logger": "^0.0",
-        "verdient/hyperf3-di": "^2.1"
+        "verdient/hyperf3-di": "^3.2"
     },
     "autoload": {
         "psr-4": {
